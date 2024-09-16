@@ -1,6 +1,9 @@
 package com.samplespringsecurityproject.app.repos;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.samplespringsecurityproject.app.entities.UserEntity;
@@ -9,4 +12,7 @@ import com.samplespringsecurityproject.app.entities.UserEntity;
 public interface UserRepo extends JpaRepository<UserEntity, Integer>{
 	
 	UserEntity findByUsername(String username);
+	
+	@Query(value = "select distinct u.role from users u", nativeQuery = true)
+	List<String> findAllRoles();
 }

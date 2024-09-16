@@ -4,17 +4,19 @@ public class UserDto {
 	private int id;
 	private String username;
 	private String password;
+	private String role;
 	
 	public UserDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserDto(int id, String username, String password) {
+	public UserDto(int id, String username, String password, String role) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.role = role;
 	}
 
 	public int getId() {
@@ -41,9 +43,17 @@ public class UserDto {
 		this.password = password;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "UserDto [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "UserDto [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 	
 }

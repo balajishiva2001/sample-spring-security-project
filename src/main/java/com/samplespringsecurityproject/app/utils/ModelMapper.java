@@ -9,10 +9,10 @@ import com.samplespringsecurityproject.app.entities.UserEntity;
 public class ModelMapper {
 	
 	public UserEntity mapToUserEntity(UserDto userDto) {
-		return new UserEntity(userDto.getId(), userDto.getUsername(), userDto.getPassword());
+		return new UserEntity(userDto.getId(), userDto.getUsername(), userDto.getPassword(), userDto.getRole());
 	}
 	
 	public UserDto mapToUserDto(UserEntity userEntity) {
-		return new UserDto(userEntity.getId(), userEntity.getUsername(), userEntity.getPassword());
+		return new UserDto(userEntity.getId(), userEntity.getUsername(), userEntity.getPassword(), userEntity.getRole());
 	}
 }

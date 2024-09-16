@@ -14,17 +14,19 @@ public class UserEntity {
 	private int id;
 	private String username;
 	private String password;
+	private String role;
 	
-	public UserEntity(int id, String username, String password) {
+	public UserEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserEntity(int id, String username, String password, String role) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-	}
-
-	public UserEntity() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.role = role;
 	}
 
 	public int getId() {
@@ -51,9 +53,17 @@ public class UserEntity {
 		this.password = password;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "UserEntity [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 	
 }

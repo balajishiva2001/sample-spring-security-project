@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.samplespringsecurityproject.app.dtos.StudentDto;
 
 @RestController
+@EnableMethodSecurity
 public class StudentController {
 	
 	/*
@@ -33,6 +36,11 @@ public class StudentController {
 	}
 	
 	@PostMapping("/addStudent")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	/*
+	 * It should have the column as role in the table with role='ROLE_ADMIN'
+	 *  For roles other than role='ROLE_ADMIN' this method gives the status as 403 Forbidden 
+	 */
 	public ResponseEntity<String> addStudent(@RequestBody StudentDto studentDto) {
 		studentDtos.add(studentDto);
 		return new ResponseEntity<String>("student created", HttpStatus.CREATED);
